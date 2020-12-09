@@ -1,10 +1,3 @@
-//
-//  DogsTests.swift
-//  DogsTests
-//
-//  Created by Jonathan Tilley on 09/12/2020.
-//
-
 import XCTest
 @testable import Dogs
 
