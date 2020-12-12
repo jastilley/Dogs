@@ -1,6 +1,6 @@
 import Foundation
 
-struct DogsJSON: Codable {
+struct DogBreedsJSON: Codable {
     
 //    let status: String
     let message: [String:[String]]
@@ -10,7 +10,7 @@ struct DogsJSON: Codable {
 //    }
 }
 
-struct BreedsListResponse: Codable {
+struct DogBreedsResponse: Codable {
     let status: String
     let message: [String : [String]]
 }

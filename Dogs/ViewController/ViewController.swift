@@ -3,7 +3,7 @@ import UIKit
 final class ViewController: UIViewController {
     
     enum Constants {
-       static let cellReusableId = DogCollectionViewCell.reuseIdentifier
+       static let cellReusableId = DogBreedCollectionViewCell.reuseIdentifier
        static let cellMinWidth: CGFloat = 150.0
        static let cellHeight: CGFloat = 50.0
        static let collectionViewPadding: CGFloat = 8.0
@@ -12,18 +12,18 @@ final class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let viewModel = ViewControllerViewModel()
-    var dogBreeds: [DogDto] = []
+    var dogBreeds: [DogBreedDto] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        func fetchSearch() {
-            DogHelper.dogs() { (dogBreeds, error) in
-                self.dogBreeds = dogBreeds
-                print("\(dogBreeds)")
-            }
-        }
-        
-//        fetchSearch()
+//        func fetchSearch() {
+//            DogHelper.dogs() { (dogBreeds, error) in
+//                self.dogBreeds = dogBreeds
+//                print("\(dogBreeds)")
+//            }
+//        }
+//        
+////        fetchSearch()
         
         setupCollectionView()
         loadRecipes()
@@ -36,7 +36,7 @@ final class ViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-       let nib = UINib.init(nibName: String(describing: DogCollectionViewCell.self), bundle: nil)
+       let nib = UINib.init(nibName: String(describing: DogBreedCollectionViewCell.self), bundle: nil)
 //       collectionView.register(nib, forCellWithReuseIdentifier: Constants.cellReusableId)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
        collectionView.dataSource = self
@@ -96,18 +96,19 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 //       assertionFailure("Wrong cell type")
 //       return UICollectionViewCell()
 //    }
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? DogCollectionViewCell else {
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? DogBreedCollectionViewCell else {
          assertionFailure("Wrong cell type")
          return UICollectionViewCell()
       }
       let recipe = dogBreeds[indexPath.row]
-      cell.set(viewModel: DogCollectionViewCellViewModel(dogDto: recipe))
+      cell.set(viewModel: DogBreedCollectionViewCellViewModel(dogBreedDto: recipe))
       
       return cell
    }
    
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//      let detailViewModel = DetailViewModel(dogBreeds: dogBreeds[indexPath.row])
+        print("collectionView didSelectItemAt")
+    //      let detailViewModel = DetailViewModel(dogBreeds: dogBreeds[indexPath.row])
 //      let detailViewController = DetailViewController(viewModel: detailViewModel)
 //      navigationController?.pushViewController(detailViewController, animated: true)
    }

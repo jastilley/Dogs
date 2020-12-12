@@ -1,10 +1,7 @@
-//  Created by work on 26/07/2020.
-//  Copyright © 2020 Olatunbosun. All rights reserved.
-
 import Foundation
 import UIKit
 
-final class DogImageView: UIImageView {
+final class DogBreedImageView: UIImageView {
    private let activityIndicatorView = UIActivityIndicatorView.init(style: .gray)
 //   private let recipesRestClient = RecipesRestClient()
    

@@ -1,9 +1,9 @@
 import UIKit
 
 final class ViewControllerViewModel {
-    private var dogs: [DogDto] = []
+    private var dogs: [DogBreedDto] = []
     
-    public func fetchDogsBreeds(completion: @escaping ([DogDto], Error?) -> Void) {
+    public func fetchDogsBreeds(completion: @escaping ([DogBreedDto], Error?) -> Void) {
         
 //        init(recipesRestClient: RecipesRestClientProtocol = RecipesRestClient()) {
 //           self.recipesRestClient = recipesRestClient

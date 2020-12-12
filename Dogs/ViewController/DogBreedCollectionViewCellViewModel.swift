@@ -1,14 +1,14 @@
 import Foundation
 
-struct DogCollectionViewCellViewModel {
+struct DogBreedCollectionViewCellViewModel {
 //   let imageUrl: URL
    let title: String
 //   let ingredientCount: String
 //   let minutes: String
    
-   init(dogDto: DogDto) {
+   init(dogBreedDto: DogBreedDto) {
 //      imageUrl = dogDto.imageURL
-      title = dogDto.name
+      title = dogBreedDto.name
 //      ingredientCount = "\(recipeDto.ingredients.count) ingredients"
 //      let totalTime = recipeDto.timers.reduce(0) { $0 + $1 }
 //      minutes =  "\(totalTime) minutes"
