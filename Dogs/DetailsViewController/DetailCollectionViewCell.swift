@@ -18,7 +18,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     func set(viewModel: DetailCollectionViewCellModel) {
         self.viewModel = viewModel
         viewModel.fetchDog() { [weak self] (dog, error) in
-            self!.imageView.load(url: dog.imageURL)
+            self?.imageView.load(url: dog.imageURL)
         }
     }
     

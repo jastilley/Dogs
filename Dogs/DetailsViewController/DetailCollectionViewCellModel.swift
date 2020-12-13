@@ -9,9 +9,9 @@ class DetailCollectionViewCellModel {
     }
     
     public func fetchDog(completion: @escaping (DogDto, Error?) -> Void) {
-        DogHelper.dog(dogBreed:dogBreed) { [self] (dog, error) in
-            self.dog = dog
-            completion(self.dog!, error)
+        DogHelper.dog(dogBreed:dogBreed) { [weak self] (dog, error) in
+            self?.dog = dog
+            completion(dog, error)
        }
     }
 }
