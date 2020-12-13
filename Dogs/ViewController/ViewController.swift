@@ -13,7 +13,8 @@ final class ViewController: UIViewController {
     
     private let viewModel = ViewControllerViewModel()
     var dogBreeds: [DogBreedDto] = []
-    var dogDetails: [DogDetailsDto] = []
+//    var dogDetails: [DogDetailsDto] = []
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -84,12 +85,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
          assertionFailure("Wrong cell type")
          return UICollectionViewCell()
       }
-      let dog = dogBreeds[indexPath.row]
-      cell.set(viewModel: DogBreedCollectionViewCellViewModel(dogBreedDto: dog))
+      cell.set(viewModel: DogBreedCollectionViewCellViewModel(dogBreedDto: dogBreeds[indexPath.row]))
       return cell
    }
    
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
         performSegue(withIdentifier: "showDetails", sender: nil)
    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showDetails") {
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.dogBreed = dogBreeds[selectedIndex]
+            }
+        }
+    }
 }

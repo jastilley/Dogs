@@ -15,6 +15,12 @@ struct DogBreedsResponse: Codable {
     let message: [String : [String]]
 }
 
+struct DogResponse: Codable {
+    let status: String
+    let message: String
+//    let message: [String : [String]]
+}
+
 struct MovieJSON {
     //MARK: - Search
     struct Search: Codable {

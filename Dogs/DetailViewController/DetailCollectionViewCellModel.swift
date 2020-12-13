@@ -1,23 +1,17 @@
 import UIKit
 
-struct DetailCollectionViewCellModel {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    //   let imageUrl: URL
-       let title: String
+class DetailCollectionViewCellModel {
+       let dogBreed: String
+    var dog: DogDto?
        
        init(dog: String) {
-    //      imageUrl = dogDto.imageURL
-          title = dog
+          dogBreed = dog
        }
     
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    public func fetchDog(completion: @escaping (DogDto, Error?) -> Void) {
+        DogHelper.dog(dogBreed:dogBreed) { [self] (dog, error) in
+            self.dog = dog
+          completion(self.dog!, error)
+       }
+    }
 }

@@ -4,23 +4,10 @@ import UIKit
 class DogHelper {
     static let dogBreedsPath = "https://dog.ceo/api/breeds/list/all"
     
-    static let dogRootPath = "https://dog.ceo/api/breed"
-//    /pug/images/random
+    static let dogRootPath = "https://dog.ceo/api/breed/"
     
-//    static func dogs(dog:String, completion: @escaping([DogDetailsDto], Error?) -> Void) {
-//        let path = dogRootPath + dog + "/images/random"
-//        guard let url = URL(string: path)
-//        else {
-//            print("invalid url ->\(path)<-")
-//            return
-//        }
-//        let config = URLSessionConfiguration.default
-//        let session = URLSession(configuration: config)
-//    }
-    
-    static func dogs(completion: ([DogDetailsDto], Error?) -> Void) {
-        let dog  = "pug"
-        let path = dogRootPath + dog + "/images/random"
+    static func dog(dogBreed: String, completion: @escaping(DogDto, Error?) -> Void) {
+        let path = dogRootPath + dogBreed + "/images/random"
         guard let url = URL(string: path)
         else {
             print("invalid url ->\(path)<-")
@@ -28,18 +15,31 @@ class DogHelper {
         }
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-    }
-    
-    static func dogs(dogBreed: String, completion: @escaping([DogDetailsDto], Error?) -> Void) {
-        let dog  = "pug"
-        let path = dogRootPath + dog + "/images/random"
-        guard let url = URL(string: path)
-        else {
-            print("invalid url ->\(path)<-")
-            return
+        let task = session.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                print ("error: \(error!)")
+                return
+            }
+            guard let data = data else {
+                print("search no data returned")
+                return
+            }
+            do {
+                let str = String(decoding: data, as: UTF8.self)
+                print("str \(str)")
+                let breedsResponse = try JSONDecoder().decode(DogResponse.self, from: data)
+                let path = breedsResponse.message
+                var dogDTO = DogDto(imageURL: URL(string:path)!)
+                DispatchQueue.main.async {
+                    completion(dogDTO,error)
+                }
+            }
+            catch let err {
+                print("Decoding failed error \(err)")
+                fatalError()
+            }
         }
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
+        task.resume()
     }
     
     static func dogBreeds(completion: @escaping([DogBreedDto], Error?) -> Void) {

@@ -8,22 +8,11 @@ public struct DogBreedDto: Decodable, Equatable {
    }
 }
 
-public struct DogDetailsDto: Decodable {
+public struct DogDto: Decodable {
     public let imageURL: URL
+//    public let path: String
     
     public init(imageURL: URL) {
        self.imageURL = imageURL
     }
 }
-
-//public struct IngredientDto: Decodable, Equatable {
-//   public let quantity: String
-//   public let name: String
-//   public let type: String
-//
-//   public init(quantity: String, name: String, type: String) {
-//      self.quantity = quantity
-//      self.name = name
-//      self.type = type
-//   }
-//}
