@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,38 +71,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5hC-DB-7kM">
-                            <size key="itemSize" width="159" height="132"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5hC-DB-7kM">
+                            <size key="itemSize" width="159" height="166"/>
+                            <size key="estimatedItemSize" width="159" height="166"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="26v-BK-ycq" customClass="DetailCollectionViewCell" customModule="Dogs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="159" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0rH-ef-tGD">
-                                    <rect key="frame" x="0.0" y="0.0" width="159" height="132"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="17" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRX-5P-kvE">
-                                            <rect key="frame" x="38" y="45" width="83" height="42"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="oRX-5P-kvE" firstAttribute="centerX" secondItem="0rH-ef-tGD" secondAttribute="centerX" id="0LV-bG-A69"/>
-                                        <constraint firstItem="oRX-5P-kvE" firstAttribute="centerY" secondItem="0rH-ef-tGD" secondAttribute="centerY" id="h7D-8y-jxL"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="159" height="132"/>
-                                <connections>
-                                    <outlet property="labelView" destination="oRX-5P-kvE" id="0O0-94-tBz"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                     </collectionView>
                     <navigationItem key="navigationItem" id="KN7-9O-FTT"/>
                     <connections>

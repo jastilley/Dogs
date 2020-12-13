@@ -2,9 +2,9 @@ import Foundation
 import UIKit
 
 class DogHelper {
-    static let dogBreedsPath = "https://dog.ceo/api/breeds/list/all"
-    
-    static let dogRootPath = "https://dog.ceo/api/breed/"
+    static let root = "https://dog.ceo/api/"
+    static let dogBreedsPath = root + "breeds/list/all"
+    static let dogRootPath = root + "breed/"
     
     static func dog(dogBreed: String, completion: @escaping(DogDto, Error?) -> Void) {
         let path = dogRootPath + dogBreed + "/images/random"
@@ -25,18 +25,15 @@ class DogHelper {
                 return
             }
             do {
-                let str = String(decoding: data, as: UTF8.self)
-                print("str \(str)")
                 let breedsResponse = try JSONDecoder().decode(DogResponse.self, from: data)
                 let path = breedsResponse.message
-                var dogDTO = DogDto(imageURL: URL(string:path)!)
+                let dogDTO = DogDto(imageURL: URL(string:path)!)
                 DispatchQueue.main.async {
                     completion(dogDTO,error)
                 }
             }
             catch let err {
-                print("Decoding failed error \(err)")
-                fatalError()
+                fatalError("Decoding failed error \(err)")
             }
         }
         task.resume()
@@ -71,8 +68,7 @@ class DogHelper {
                 }
             }
             catch let err {
-                print("Decoding failed error \(err)")
-                fatalError()
+                fatalError("Decoding failed error \(err)")
             }
         }
         task.resume()

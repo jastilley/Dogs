@@ -5,9 +5,8 @@ final class ViewControllerViewModel {
     
     public func fetchDogsBreeds(completion: @escaping ([DogBreedDto], Error?) -> Void) {
         DogHelper.dogBreeds { [self] (dogsBreeds, error) in
-          self.dogsBreeds = dogsBreeds
-          completion(self.dogsBreeds, error)
-       }
+            self.dogsBreeds = dogsBreeds
+            completion(self.dogsBreeds, error)
+        }
     }
-    
 }
