@@ -13,38 +13,27 @@ final class ViewController: UIViewController {
     
     private let viewModel = ViewControllerViewModel()
     var dogBreeds: [DogBreedDto] = []
+    var dogDetails: [DogDetailsDto] = []
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-//        func fetchSearch() {
-//            DogHelper.dogs() { (dogBreeds, error) in
-//                self.dogBreeds = dogBreeds
-//                print("\(dogBreeds)")
-//            }
-//        }
-//        
-////        fetchSearch()
-        
+        super.viewDidLoad()        
         setupCollectionView()
-        loadRecipes()
+        loadDogBreeds()
     }
     
     override func viewWillLayoutSubviews() {
        super.viewWillLayoutSubviews()
-       
        updateCollectionViewLayout()
     }
     
     private func setupCollectionView() {
-       let nib = UINib.init(nibName: String(describing: DogBreedCollectionViewCell.self), bundle: nil)
-//       collectionView.register(nib, forCellWithReuseIdentifier: Constants.cellReusableId)
+        let nib = UINib.init(nibName: String(describing: DogBreedCollectionViewCell.self), bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
-       collectionView.dataSource = self
-       collectionView.delegate = self
-//       collectionView.keyboardDismissMode = .onDrag
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
-    private func loadRecipes(filter: String? = nil) {
+    private func loadDogBreeds(filter: String? = nil) {
        viewModel.fetchDogsBreeds() { [weak self] (dogBreeds, error) in
           self?.dogBreeds = dogBreeds
           self?.collectionView.reloadData()
@@ -58,7 +47,6 @@ final class ViewController: UIViewController {
        flowLayout.minimumInteritemSpacing = padding
        flowLayout.minimumLineSpacing = padding
        flowLayout.itemSize = cellSize(padding: padding)
-       
        collectionView.collectionViewLayout = flowLayout
     }
     
@@ -92,28 +80,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? DogCollectionViewCell else {
-//       assertionFailure("Wrong cell type")
-//       return UICollectionViewCell()
-//    }
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? DogBreedCollectionViewCell else {
          assertionFailure("Wrong cell type")
          return UICollectionViewCell()
       }
-      let recipe = dogBreeds[indexPath.row]
-      cell.set(viewModel: DogBreedCollectionViewCellViewModel(dogBreedDto: recipe))
-      
+      let dog = dogBreeds[indexPath.row]
+      cell.set(viewModel: DogBreedCollectionViewCellViewModel(dogBreedDto: dog))
       return cell
    }
    
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("collectionView didSelectItemAt")
-    //      let detailViewModel = DetailViewModel(dogBreeds: dogBreeds[indexPath.row])
-//      let detailViewController = DetailViewController(viewModel: detailViewModel)
-//      navigationController?.pushViewController(detailViewController, animated: true)
-   }
-   
-   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//      loadRecipes(filter: searchBar.text)
+        performSegue(withIdentifier: "showDetails", sender: nil)
    }
 }

@@ -209,7 +209,5 @@ JSON
     "status": "success"
 }
 
-https://dog.ceo/api/breed/Affenpinscher/images/random
-
-
+https://dog.ceo/api/breed/pug/images/random
 https://dog.ceo/api/breed/hound/images

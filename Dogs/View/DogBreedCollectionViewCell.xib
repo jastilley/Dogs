@@ -33,6 +33,7 @@
             </view>
             <viewLayoutGuide key="safeArea" id="F3E-Ed-u0X"/>
             <constraints>
+                <constraint firstItem="qsH-35-dEI" firstAttribute="centerY" secondItem="F3E-Ed-u0X" secondAttribute="centerY" id="mzp-HA-SXv"/>
                 <constraint firstItem="NiZ-3P-Kma" firstAttribute="leading" secondItem="dvr-Mn-dKD" secondAttribute="leading" id="n7a-pi-cFA"/>
             </constraints>
             <size key="customSize" width="410" height="914"/>

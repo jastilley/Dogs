@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class DogBreedImageView: UIImageView {
+final class DogImageView: UIImageView {
    private let activityIndicatorView = UIActivityIndicatorView.init(style: .gray)
 //   private let recipesRestClient = RecipesRestClient()
    

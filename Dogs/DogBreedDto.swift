@@ -9,7 +9,11 @@ public struct DogBreedDto: Decodable, Equatable {
 }
 
 public struct DogDetailsDto: Decodable {
+    public let imageURL: URL
     
+    public init(imageURL: URL) {
+       self.imageURL = imageURL
+    }
 }
 
 //public struct IngredientDto: Decodable, Equatable {

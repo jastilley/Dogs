@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,6 +41,7 @@
                     <navigationItem key="navigationItem" id="OeK-JF-o2e"/>
                     <connections>
                         <outlet property="collectionView" destination="0ni-7W-1dO" id="95O-OV-lis"/>
+                        <segue destination="YG6-Ns-RrW" kind="show" identifier="showDetails" id="W2m-81-J6T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -61,6 +63,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbl-ug-rgm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-435" y="-698"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Zrc-QO-VhV">
+            <objects>
+                <viewController id="YG6-Ns-RrW" customClass="DetailViewController" customModule="Dogs" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WUH-QX-4fi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5hC-DB-7kM">
+                            <size key="itemSize" width="159" height="132"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="26v-BK-ycq" customClass="DetailCollectionViewCell" customModule="Dogs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="159" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0rH-ef-tGD">
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="132"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="17" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRX-5P-kvE">
+                                            <rect key="frame" x="38" y="45" width="83" height="42"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oRX-5P-kvE" firstAttribute="centerX" secondItem="0rH-ef-tGD" secondAttribute="centerX" id="0LV-bG-A69"/>
+                                        <constraint firstItem="oRX-5P-kvE" firstAttribute="centerY" secondItem="0rH-ef-tGD" secondAttribute="centerY" id="h7D-8y-jxL"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="159" height="132"/>
+                                <connections>
+                                    <outlet property="labelView" destination="oRX-5P-kvE" id="0O0-94-tBz"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="KN7-9O-FTT"/>
+                    <connections>
+                        <outlet property="collectionView" destination="WUH-QX-4fi" id="JdY-sy-DaH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fvL-Ca-W6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211.5942028985507" y="-698.4375"/>
         </scene>
     </scenes>
     <resources>
