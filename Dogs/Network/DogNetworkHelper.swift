@@ -17,7 +17,7 @@ class DogHelper {
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: url) { data, response, error in
             guard error == nil else {
-                print ("error: \(error!)")
+                print ("error getting data")
                 return
             }
             guard let data = data else {
@@ -27,7 +27,11 @@ class DogHelper {
             do {
                 let breedsResponse = try JSONDecoder().decode(DogResponse.self, from: data)
                 let path = breedsResponse.message
-                let dogDTO = DogDto(imageURL: URL(string:path)!)
+                guard let url = URL(string:path) else {
+                    print("invalid url for path \(path)")
+                    return
+                }
+                let dogDTO = DogDto(imageURL: url)
                 DispatchQueue.main.async {
                     completion(dogDTO,error)
                 }
@@ -49,7 +53,7 @@ class DogHelper {
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: url) { data, response, error in
             guard error == nil else {
-                print ("error: \(error!)")
+                print ("error getting data")
                 return
             }
             guard let data = data else {
