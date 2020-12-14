@@ -10,7 +10,7 @@ class DogHelper {
         let path = dogRootPath + dogBreed + "/images/random"
         guard let url = URL(string: path)
         else {
-            print("invalid url ->\(path)<-")
+            print("invalid url \(path)")
             return
         }
         let config = URLSessionConfiguration.default
@@ -42,7 +42,7 @@ class DogHelper {
     static func dogBreeds(completion: @escaping([DogBreedDto], Error?) -> Void) {
         guard let url = URL(string: dogBreedsPath)
         else {
-            print("invalid url ->\(dogBreedsPath)<-")
+            print("invalid url \(dogBreedsPath)")
             return
         }
         let config = URLSessionConfiguration.default
